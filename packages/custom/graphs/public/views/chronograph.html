@@ -1,0 +1,76 @@
+<section data-ng-controller="GraphsController" data-ng-init="chronograph()">
+	<div id="chronograph_container" class="chronograph_container">
+		<div id="left_container" class="left_container">
+			<div id="top_controller" class="top_controller" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); height: 40px;">
+				<div id="play_button_container" class="play_button_container"></div>
+				<div id="timeline_container" class="timeline_container"></div>
+			</div>
+			<div id="graph_container" class="graph_container" style="display: block"></div>
+		</div>
+		<div id="right_container" class="right_container">
+			<div id="side_controller"></div>
+			<table id="menu_panel" class="menu_panel" width="100%">
+				<tbody>
+					<tr>
+						<td id="edit_graph_button" data-ng-hide="isEditMode" data-ng-click="chronographEdit()" class=""><span>Edit Graph</span></td>
+						<td id="save_graph_button" data-ng-show="isEditMode" data-ng-click="chronographSave()"><span>Save</span></td>
+						<td id="cancel_edit_button" data-ng-show="isEditMode" data-ng-click="chronographCancel()"><span>Cancel</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="main_menu" style="margin-top: 10px;">
+
+
+				<form role="form">
+
+					<div class="checkbox" data-ng-show="isEditMode">
+					  <label class="control-label">
+					    <input type="checkbox" data-ng-model="fdg" data-ng-change="fdgToggle()">
+					    	Force directed graph
+					  </label>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Playback Options</label>
+						<div class="btn-group">
+					        <button type="button" class="btn btn-primary" data-ng-model="playback" btn-radio="'REAL'" disabled>Real-Time</button>
+					        <button type="button" class="btn btn-primary" data-ng-model="playback" btn-radio="'ARB'">In Order</button>
+					    </div>
+
+
+					    <div class="checkbox">
+						  <label class="contraol-label">
+						    <input type="checkbox" data-ng-model="heatmap" data-ng-change="heatmapToggle()">
+						    Display traversal heatmap
+						  </label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="playSpeed">Play Speed</label>
+						<div id="playSpeedSlider" class="playSpeedSlider"></div>
+						<input class="form-control" data-ng-model="playSpeed" style="text-align: right;" readonly="true" id="playSpeed" />
+					</div>
+
+					<div class="form-group">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Id</th><th>Agent</th><th>Num Steps</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="agent in agents" data-ng-click="agentClick(agent.id)" data-ng-class="{'agent-row': true, success: isSelectedAgent(agent.id)}" >
+									<td>{{agent.id}}</td>
+									<td>{{agent.label}}</td>
+									<td>{{agent.steps.length}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div id="edit_menu" style="display: none;"></div>
+		</div>
+	</div>
+</section>
