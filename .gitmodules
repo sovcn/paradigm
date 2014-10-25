@@ -1,0 +1,3 @@
+[submodule "packages/custom/graphs/public/assets/js/chronograph"]
+	path = packages/custom/graphs/public/assets/js/chronograph
+	url = https://github.com/sovcn/chronograph.git

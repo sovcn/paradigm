@@ -5,7 +5,6 @@
     "jquery": "1.x",
     "jquery-ui": "latest",
     "d3": "http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js",
-    "chronograph": "https://raw.githubusercontent.com/sovcn/gravityjs/master/public/system/chronograph/src/chronograph.js",
     "angular": "latest",
     "angular-resource": "latest",
     "angular-cookies": "latest",
